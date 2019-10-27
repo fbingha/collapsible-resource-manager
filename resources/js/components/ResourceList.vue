@@ -32,8 +32,17 @@
 
                 </a>
 
+                <router-link v-else-if="resource.index" class="relative text-white text-justify no-underline dim"
+                    :to="{ name: 'index', params: { resourceName: resource.route } }">
+
+                    <div v-if="resource.icon" class="absolute icon flex" v-html="resource.icon"/>
+
+                    {{ resource.label }}
+
+                </router-link>
+
                 <router-link v-else class="relative text-white text-justify no-underline dim"
-                             :to="{ name: 'index', params: { resourceName: resource.route } }">
+                             :to="{ name: resource.route, params: resource.params }">
 
                     <div v-if="resource.icon" class="absolute icon flex" v-html="resource.icon"/>
 
