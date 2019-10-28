@@ -1,8 +1,8 @@
 <template>
 
-    <ul class="list-reset" v-if="resources.length">
+    <ul class="second-level list-reset" v-if="resources.length">
 
-        <li class="leading-tight pt-4 text-sm" v-for="resource of resources" :class="{ 'ml-8': !recursive }">
+        <li class="second-level-li leading-tight py-2 text-sm" v-for="resource of resources" :class="{ 'ml-4 pl-3': !recursive }">
 
             <collapsible-resource-manager v-if="resource.recursive"
                                           :data="resource"
@@ -72,7 +72,13 @@
 </script>
 
 <style scoped>
-
+    .second-level {
+        background: #3E4552;
+    }
+    .second-level-li {
+        border-left: 1px solid rgba(255,255,255,0.08);
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
     .icon {
         width: 15px;
         top: -3px;
