@@ -1,6 +1,6 @@
 <template>
 
-    <div v-if="!isEmpty" :class="{ 'mb-8': !data.recursive, 'recursive': data.recursive }">
+    <div v-if="!isEmpty" :class="{ 'mb-8 list-wrap': !data.recursive, 'recursive': data.recursive }">
 
         <h3 class="flex items-center font-normal text-white mb-6 text-base no-underline" v-if="data.title">
 
@@ -23,9 +23,11 @@
 
         <template v-for="(group, index) of data.groups" v-if="group.resources.length">
 
-            <h4 class="relative select-none ml-8 mt-4 text-xs text-white-50% uppercase tracking-wide cursor-pointer"
+            <h4 class="top-level relative select-none ml-0 p-3 text-sm cursor-pointer text-white"
                 v-if="group.title"
                 @click="toggleGroup(index)">
+
+                {{ group.title }}
 
                 <div class="absolute flex flex-auto collapsible-indicator">
 
@@ -42,8 +44,6 @@
                     </svg>
 
                 </div>
-
-                {{ group.title }}
 
             </h4>
 
@@ -125,9 +125,17 @@
 
 <style>
 
+    .list-wrap {
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+    }
+    .top-level {
+        background: #454D5B;
+        border-top: 1px solid rgba(255,255,255,0.15);
+    }
     .collapsible-indicator {
-        top: -6px;
-        left: -30px;
+        top: 6px;
+        right: 6px;
     }
 
     .resources-only li:first-child {
